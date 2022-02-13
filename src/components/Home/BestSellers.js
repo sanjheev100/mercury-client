@@ -109,6 +109,7 @@ const BestSellers = () => {
                   current={page}
                   total={Math.ceil(totalProductCount / 3) * 10}
                   onChange={(value) => setPage(value)}
+                  showSizeChanger={false}
                 />
               </nav>
             </Row>

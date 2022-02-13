@@ -372,6 +372,7 @@ const Shop = () => {
                   current={page}
                   total={Math.ceil(totalProductCount / 6) * 10}
                   onChange={(value) => handlePageChange(value)}
+                  showSizeChanger={false}
                 />
               </nav>
             </div>
