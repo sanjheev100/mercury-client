@@ -36,6 +36,8 @@ const Header = () => {
     navigate('/')
   }
 
+  var screenWidth = window.innerWidth
+
   const dashboardRedirect = () => {
     if (user && user.role === 'admin') {
       navigate('/admin/dashboard')
@@ -64,7 +66,7 @@ const Header = () => {
           </Link>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ms-auto py-sm-2' id='navItems'>
+            <Nav className='ms-auto py-sm-2 ' id='navItems'>
               <div
                 style={{
                   color: 'white',
@@ -72,9 +74,11 @@ const Header = () => {
                   marginRight: '10px',
                   marginLeft: '10px',
                 }}
+                className='customheaderSearch'
               >
                 <Search />
               </div>
+              {screenWidth < 992 ? <br /> : ''}
               <div>
                 <Link
                   to='/cart'
@@ -104,6 +108,7 @@ const Header = () => {
                   </Badge>
                 </Link>
               </div>
+              {screenWidth < 992 ? <br /> : ''}
 
               {/* </> */}
 
@@ -118,6 +123,7 @@ const Header = () => {
               >
                 <i className='fa fa-shop'></i> Shop
               </Link>
+              {screenWidth < 992 ? <br /> : ''}
 
               {!user && (
                 <Link

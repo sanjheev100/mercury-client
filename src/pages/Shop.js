@@ -64,7 +64,7 @@ const Shop = () => {
     setPage(value)
   }
 
-  const perPage = 6
+  const perPage = 21
   // 1. Load products on page load
   const loadAllProducts = () => {
     setLoading(true)
@@ -367,10 +367,10 @@ const Shop = () => {
                   </div>
                 ))}
               </Row>
-              <nav className='col-md-4 offset-md-4 text-center pt-2 p-3'>
+              <nav className='col-md-6   text-center pt-2 p-3'>
                 <Pagination
                   current={page}
-                  total={Math.ceil(totalProductCount / 6) * 10}
+                  total={Math.ceil(totalProductCount / perPage) * 10}
                   onChange={(value) => handlePageChange(value)}
                   showSizeChanger={false}
                 />
