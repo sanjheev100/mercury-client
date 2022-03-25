@@ -53,7 +53,6 @@ const NewArrivals = () => {
               height: '100px',
               backgroundColor:
                 'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
-              color: 'white',
             }}
           >
             <Typewriter

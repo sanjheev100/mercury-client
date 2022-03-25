@@ -84,10 +84,10 @@ const ProductCardInCheckout = ({ product }) => {
             )}
           </div>
         </td>
-        <td style={{ color: 'white' }}>{product.title}</td>
-        <td style={{ color: 'white' }}>₹{product.price}</td>
-        <td style={{ color: 'white' }}>{product.brand}</td>
-        <td style={{ color: 'white' }} className='text-center'>
+        <td>{product.title}</td>
+        <td>₹{product.price}</td>
+        <td>{product.brand}</td>
+        <td className='text-center'>
           <input
             type='number'
             className='form-control'

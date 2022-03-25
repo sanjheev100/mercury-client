@@ -1,5 +1,6 @@
 .Header {
-  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  /* background: linear-gradient(to right, #0f0c29, #302b63, #24243e); */
+  background-color: #4db4f3;
 }
 
 .title {

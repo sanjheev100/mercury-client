@@ -35,8 +35,8 @@ const RegisterComplete = ({ history }) => {
   }, [user])
 
   const submitHandler = async () => {
-    if (password.length < 6) {
-      return toast.error(`Password must be 6 characters`)
+    if (password.length < 8) {
+      return toast.error(`Password must be 8 characters`)
     }
 
     if (confirmPassword !== password) {

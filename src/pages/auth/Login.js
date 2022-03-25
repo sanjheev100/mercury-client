@@ -157,14 +157,14 @@ const Login = () => {
       ) : (
         <>
           {user && user.token ? (
-            <h4 className='text-white'>Already Logged IN</h4>
+            <h4>Already Logged IN</h4>
           ) : (
             <>
-              <h1 className='text-white'>Sign In</h1>
+              <h1>Sign In</h1>
               <Form onSubmit={submitHandler}>
                 <Form.Group controlId='email'>
                   <Form.Label>
-                    <strong className='text-white'>Email Address</strong>
+                    <strong style={{ color: 'black' }}>Email Address</strong>
                   </Form.Label>
                   <Form.Control
                     type='email'
@@ -177,7 +177,7 @@ const Login = () => {
                 <br />
                 <Form.Group controlId='password'>
                   <Form.Label>
-                    <strong className='text-white'>Password</strong>
+                    <strong style={{ color: 'black' }}>Password</strong>
                   </Form.Label>
                   <Form.Control
                     type='password'
@@ -193,7 +193,7 @@ const Login = () => {
                   type='submit'
                   className='mt-3 btn btn-primary'
                   disabled={
-                    !email || password.length < 6 || (user && user.token)
+                    !email || password.length < 8 || (user && user.token)
                   }
                 >
                   <i className='fa fa-sign-in' aria-hidden='true'></i> Login
@@ -212,7 +212,7 @@ const Login = () => {
                 </Button>
               </Form>
               <Row className='py-3'>
-                <Col className='text-white'>
+                <Col style={{ color: 'black' }}>
                   Can't Login? <Link to='/register'>Register Now</Link>
                   &nbsp;or{' '}
                   <Link to='/forgot/password' className='text-danger'>

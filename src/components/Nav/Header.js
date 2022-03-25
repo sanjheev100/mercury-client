@@ -69,12 +69,12 @@ const Header = () => {
             <Nav className='ms-auto py-sm-2 ' id='navItems'>
               <div
                 style={{
-                  color: 'white',
                   textDecoration: 'none',
                   marginRight: '10px',
                   marginLeft: '10px',
+                  // width: '100%',
                 }}
-                className='customheaderSearch'
+                className='customheaderSearch text-center'
               >
                 <Search />
               </div>
@@ -83,7 +83,6 @@ const Header = () => {
                 <Link
                   to='/cart'
                   style={{
-                    color: 'white',
                     textDecoration: 'none',
                     marginRight: '30px',
                     // marginLeft: 'px',
@@ -92,14 +91,12 @@ const Header = () => {
                   <Badge count={cart.length} offset={[9, 0]}>
                     <i
                       style={{
-                        color: 'white',
                         textDecoration: 'none',
                       }}
                       className='fas fa-cart-plus'
                     ></i>{' '}
                     <span
                       style={{
-                        color: 'white',
                         textDecoration: 'none',
                       }}
                     >
@@ -112,23 +109,24 @@ const Header = () => {
 
               {/* </> */}
 
-              <Link
+              {/* <Link
                 to='/shop'
                 style={{
-                  color: 'white',
                   textDecoration: 'none',
                   marginRight: '10px',
                   // marginLeft: '10px',
+                  textDecoration: 'none',
+                  color: 'black',
                 }}
               >
                 <i className='fa fa-shop'></i> Shop
-              </Link>
+              </Link> */}
               {screenWidth < 992 ? <br /> : ''}
 
               {!user && (
                 <Link
                   to='/login'
-                  style={{ textDecoration: 'none', color: 'white' }}
+                  style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <i className='fa fa-sign-in' aria-hidden='true'></i> Sign In
                 </Link>
@@ -137,7 +135,7 @@ const Header = () => {
                 <NavDropdown
                   style={{ bottom: 8 }}
                   title={
-                    <span className='my-auto' style={{ color: 'white' }}>
+                    <span className='my-auto'>
                       {user.email && user.email.split('@')[0]}
                     </span>
                   }

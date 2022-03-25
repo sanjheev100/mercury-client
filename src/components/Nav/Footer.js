@@ -7,11 +7,11 @@ const Footer = () => {
     <div>
       <Container>
         <Row>
-          <Col className='text-center py-3' style={{ color: 'white' }}>
+          <Col className='text-center py-3'>
             <Link to='/contactus' style={{ textDecoration: 'none' }}>
               <h5 style={{ color: '#1881f0' }}>Contact Us</h5>
             </Link>
-            <h4 className='text-white'>Copyright &copy; Mercury </h4>
+            <h4>Copyright &copy; Mercury </h4>
           </Col>
         </Row>
       </Container>

@@ -59,15 +59,17 @@ const Home = () => {
   return (
     <>
       <div
-        className='h1 font-weight-bold d-flex align-items-center justify-content-center '
+        className='d-flex align-items-center justify-content-center '
         style={{
           height: '100px',
-          backgroundColor:
-            'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
-          color: 'white',
         }}
       >
-        <h1 style={{ color: 'white' }} onClick={() => confettishow()}>
+        <h1
+          style={{
+            color: '100px',
+          }}
+          onClick={() => confettishow()}
+        >
           Mercury Mega Mart
         </h1>
       </div>

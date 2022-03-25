@@ -7,13 +7,12 @@ import {
 } from '../api/product'
 import { getCategories } from '../api/category'
 import { useSelector, useDispatch } from 'react-redux'
-import { ProductCard, Star } from '../components'
+import { ProductCard, Star, ProductCarousel } from '../components'
 import { Menu, Slider, Checkbox, Pagination } from 'antd'
 import { getSubCategories } from '../api/subCategory'
 import { Badge, Button, Row, Tooltip } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import './shop.css'
-import { toast } from 'react-toastify'
 import { useLocation } from 'react-router-dom'
 
 const { SubMenu, ItemGroup } = Menu
@@ -31,6 +30,7 @@ const Shop = () => {
   // const [filterApplied, setFilterApplied] = useState(false)
   const [page, setPage] = useState(1)
   const [totalProductCount, setTotalProductCount] = useState(0)
+  const [newlyAdded, setNewlyAdded] = useState([])
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -59,6 +59,26 @@ const Shop = () => {
       setTotalProductCount(res.data)
     })
   }, [])
+
+  useEffect(() => {
+    loadNewlyAdded()
+  }, [])
+
+  const loadNewlyAdded = () => {
+    setLoading(true)
+    getProductswithCustom('createdAt', 'desc', 1, 3)
+      .then((res) => {
+        setLoading(false)
+
+        setNewlyAdded(res.data)
+      })
+      .catch((err) => {
+        setLoading(false)
+
+        setLoading(false)
+        console.log(err)
+      })
+  }
 
   const handlePageChange = (value) => {
     setPage(value)
@@ -184,7 +204,7 @@ const Shop = () => {
     fetchProductsByFilter({ stars: num })
   }
 
-  // 6. Show products by sub category
+  // //  Show products by sub category
   // const showSubCategories = () =>
   //   subCategories.map((s) => (
   //     <div
@@ -208,13 +228,7 @@ const Shop = () => {
         onClick={() => handleSubCatSubmit(s._id)}
         key={s._id}
       >
-        <Badge
-          style={{
-            background: 'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
-          }}
-        >
-          {s.name}
-        </Badge>
+        <Badge>{s.name}</Badge>
       </h6>
     ))
 
@@ -240,7 +254,7 @@ const Shop = () => {
     setProducts([])
     loadAllProducts()
 
-    navigate('/shop')
+    navigate('/')
   }
 
   return (
@@ -250,15 +264,15 @@ const Shop = () => {
     >
       <div className='row'>
         <div className='col-md-3 pt-2'>
-          <h4 style={{ color: 'white' }}>Search/Filter</h4>
-          <hr style={{ color: 'white' }} />
+          <h4 className='text-secondary'>Search/Filter</h4>
+          <hr />
 
           {filterApplied && (
             <Button
               className='clearbtn btn-sm'
-              style={{ marginTop: '-10px' }}
               onClick={handleClearFilter}
               style={{
+                marginTop: '-10px',
                 position: 'fixed',
                 bottom: 150,
                 right: 20,
@@ -273,19 +287,6 @@ const Shop = () => {
             mode='inline'
             defaultOpenKeys={['1', '2', '3', '4', '5', '6', '7']}
           >
-            {/* Price */}{' '}
-            <SubMenu key='1' title={<span className='h6'>(₹) Price </span>}>
-              <div>
-                <Slider
-                  className='ml-4 mr-4'
-                  tipFormatter={(val) => `₹${val}`}
-                  range
-                  value={price}
-                  onChange={handleSlider}
-                  max='49999'
-                />
-              </div>
-            </SubMenu>
             {/* Categories */}
             <SubMenu
               key='2'
@@ -297,7 +298,7 @@ const Shop = () => {
             >
               <div style={{ marginTop: '-10px' }}>{showCategories()}</div>
             </SubMenu>
-            {/* Ratings */}
+            {/* Ratings
             <SubMenu
               key='3'
               title={
@@ -307,7 +308,7 @@ const Shop = () => {
               }
             >
               <div style={{ marginTop: '-10px' }}>{showStars()}</div>
-            </SubMenu>
+            </SubMenu> */}
             {/* Subcategories */}
             <SubMenu
               key='4'
@@ -325,6 +326,8 @@ const Shop = () => {
         </div>
 
         <div className='col-md-9 pt-2'>
+          <ProductCarousel newlyAddedproducts={newlyAdded} />
+
           {loading ? (
             <>
               <h4 className='text-white'>Loading...</h4>

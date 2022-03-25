@@ -18,6 +18,7 @@ const initialState = {
   city: '',
   landmark: '',
   pincode: '',
+  flatNumber: '',
 }
 const Checkout = () => {
   const dispatch = useDispatch()
@@ -33,6 +34,15 @@ const Checkout = () => {
     getUserCart(user.token).then((res) => {
       setProducts(res.data.products)
       setTotal(res.data.cartTotal)
+    })
+    toast.success('Currently We are Delivering Product Only at 453441', {
+      position: 'top-center',
+      autoClose: 10000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     })
   }, [])
 
@@ -103,32 +113,33 @@ const Checkout = () => {
       }
     })
   }
+
   return (
     <div className='row'>
       <div className='col-md-6'>
         <br />
         <br />
         <Container>
-          <h4 className='mytext-white text-center'>Delivery Address</h4>
+          <h4 className='text-center'>Delivery Address</h4>
 
           <AddressForm values={values} handleChange={handleChange} />
           <Button onClick={saveAddressToDb}>Save</Button>
         </Container>
       </div>
       <div className='col-md-6'>
-        <h4 className='mytext-white '>Order Summary</h4>
+        <h4>Order Summary</h4>
         <hr />
-        <h5 className='mytext-white'>Total {products.length} in Cart</h5>
+        <h5>Total {products.length} in Cart</h5>
         <hr />
         {products.map((p, index) => (
           <div key={index}>
-            <h5 className='mytext-white'>
+            <h5>
               {p.product.title} x {p.count} = {p.product.price * p.count}{' '}
             </h5>
           </div>
         ))}
         <hr />
-        <h5 className='mytext-white'>Cart Total : {total}</h5>
+        <h5>Cart Total : {total}</h5>
         <div className='row'>
           <div className='col-md-6'>
             <Button

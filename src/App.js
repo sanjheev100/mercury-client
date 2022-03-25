@@ -138,8 +138,8 @@ const App = () => {
       ) : (
         <main className='py-3'>
           <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/shop' element={<Shop />} />
+            <Route exact path='/' element={<Shop />} />
+            {/* <Route exact path='/shop' element={<Shop />} /> */}
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
             <Route

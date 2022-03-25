@@ -40,24 +40,12 @@ const Cart = () => {
     <table className='table table-bordered'>
       <thead className='thead-light'>
         <tr>
-          <th scope='col' style={{ color: 'white' }}>
-            Image
-          </th>
-          <th scope='col' style={{ color: 'white' }}>
-            Title
-          </th>
-          <th scope='col' style={{ color: 'white' }}>
-            Price
-          </th>
-          <th scope='col' style={{ color: 'white' }}>
-            Brand
-          </th>
-          <th scope='col' style={{ color: 'white' }}>
-            Count
-          </th>
-          <th scope='col' style={{ color: 'white' }}>
-            Remove
-          </th>
+          <th scope='col'>Image</th>
+          <th scope='col'>Title</th>
+          <th scope='col'>Price</th>
+          <th scope='col'>Brand</th>
+          <th scope='col'>Count</th>
+          <th scope='col'>Remove</th>
         </tr>
       </thead>
       {cart.map((p) => (
@@ -70,10 +58,10 @@ const Cart = () => {
     <div className='container-fluid'>
       <div className='row'>
         <div className='col-md-8'>
-          <h4 style={{ color: 'white' }}>{cart.length} items in the Cart </h4>
+          <h4>{cart.length} items in the Cart </h4>
 
           {!cart.length ? (
-            <p style={{ color: 'white' }}>
+            <p>
               No Products in the cart <Link to='/'>Continue Shopping</Link>
             </p>
           ) : (
@@ -81,12 +69,12 @@ const Cart = () => {
           )}
         </div>
         <div className='col-md-4'>
-          <h4 style={{ color: 'white' }}>
+          <h4>
             Order Summary <hr />
             <p>Products</p>
             {cart.map((c, i) => (
               <div key={i}>
-                <h5 style={{ color: 'white' }}>
+                <h5>
                   {c.title} * {c.count} = ₹{c.price * c.count}
                 </h5>
               </div>
@@ -96,7 +84,7 @@ const Cart = () => {
             <hr />
             {user ? (
               <Button
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: 'none' }}
                 disabled={cart.length < 1}
                 onClick={saveOrderToDb}
               >
@@ -109,7 +97,7 @@ const Cart = () => {
                     pathname: '/login',
                     state: { from: 'cart' },
                   }}
-                  style={{ textDecoration: 'none', color: 'white' }}
+                  style={{ textDecoration: 'none', color: 'black' }}
                 >
                   Login to Checkout
                 </Link>
